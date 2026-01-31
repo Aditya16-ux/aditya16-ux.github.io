@@ -94,3 +94,19 @@ li button {
   font-size: 16px;
   padding: 0;
 }
+.task {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.task.completed span {
+  text-decoration: line-through;
+  color: #9ca3af;
+}
+
+.task input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #38bdf8;
+}
