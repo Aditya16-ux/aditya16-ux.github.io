@@ -132,3 +132,63 @@ function resetTimer() {
 }
 
 updateTimerDisplay();
+function startTask(index) {
+  if (activeIndex !== null && activeIndex !== index) {
+    alert("Only one task at a time. Finish it properly.");
+    return;
+  }
+
+  activeIndex = index;
+  tasks[index].running = true;
+
+  interval = setInterval(() => {
+    if (tasks[index].remaining > 0) {
+      tasks[index].remaining--;
+      renderTasks();
+    } else {
+      clearInterval(interval);
+      tasks[index].running = false;
+      tasks[index].done = true;
+      activeIndex = null;
+
+      alert("Successful people are not gifted; they just work hard, then succeed on purpose.");
+      renderTasks();
+    }
+  }, 1000);
+}
+
+function pauseTask() {
+  clearInterval(interval);
+  activeIndex = null;
+}
+
+function resetTask(index) {
+  clearInterval(interval);
+  tasks[index].remaining = tasks[index].duration;
+  tasks[index].running = false;
+  activeIndex = null;
+  renderTasks();
+}
+
+function startBreak(index) {
+  clearInterval(interval);
+  activeIndex = index;
+
+  tasks[index].onBreak = true;
+  tasks[index].remaining = 8 * 60;
+
+  interval = setInterval(() => {
+    if (tasks[index].remaining > 0) {
+      tasks[index].remaining--;
+      renderTasks();
+    } else {
+      clearInterval(interval);
+      tasks[index].onBreak = false;
+      tasks[index].remaining = tasks[index].duration;
+      activeIndex = null;
+
+      alert("Break over. Back to work.");
+      renderTasks();
+    }
+  }, 1000);
+}
