@@ -155,3 +155,20 @@ select {
   outline: none;
   font-size: 16px;
 }
+.pomodoro {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+#timerDisplay {
+  font-size: 48px;
+  font-weight: bold;
+  margin: 15px 0;
+  color: #38bdf8;
+}
+
+.timer-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
