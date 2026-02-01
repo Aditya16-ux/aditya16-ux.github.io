@@ -58,11 +58,14 @@ function renderTasks() {
     list.appendChild(li);
   });
 
-  localStorage.setItem("tasks", JSON.stringify(tasks));
+ localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
-  localStorage.setItem("tasks", JSON.stringify(tasks));
+
+ localStorage.setItem("tasks", JSON.stringify(tasks));
+updateTotalTime();
 }
+
 
 function addTask() {
   const input = document.getElementById("taskInput");
